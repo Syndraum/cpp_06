@@ -1,10 +1,11 @@
 #ifndef CONVERT
 # define CONVERT
 
-#include <cstring>
-#include <string>
-#include <exception>
-#include <iostream>
+# include <cstring>
+# include <string>
+# include <exception>
+# include <iostream>
+# include <sstream>
 
 class Convert
 {
@@ -25,10 +26,10 @@ public:
 	virtual ~Convert(void);
 	Convert &	operator=(Convert const &rhs);
 
-	char			getChar(void) const;
-	int				getInt(void) const;
-	float			getFloat(void) const;
-	double			getDouble(void) const;
+	std::string		getChar(void) const;
+	std::string		getInt(void) const;
+	std::string		getFloat(void) const;
+	std::string		getDouble(void) const;
 
 	void	detection();
 	bool	isChar() const;

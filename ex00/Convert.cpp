@@ -136,10 +136,24 @@ bool	Convert::isDouble() const
 
 void	Convert::display() const
 {
-	std::cout << "char: " << _char << std::endl;
-	std::cout << "int: " << _int << std::endl;
-	std::cout << "float: " << _float << std::endl;
-	std::cout << "double: " << _double << std::endl;
+	std::cout << "char: ";
+	try {
+		std::cout << getChar() << std::endl;
+	}
+	catch(const std::exception& e){
+		std::cout << e.what() << '\n';
+	}
+	std::cout << "int: ";
+	try
+	{
+		std::cout << getInt() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
+	std::cout << "float: " << getFloat() << std::endl;
+	std::cout << "double: " << getDouble() << std::endl;
 	
 }
 
@@ -151,22 +165,44 @@ void	Convert::printIs()
 	std::cout << "is double ? " << isDouble() << std::endl;
 }
 
-char			Convert::getChar(void) const
+std::string		Convert::getChar(void) const
 {
-	return this->_char;
+	std::stringstream ss;
+
+	if (_float != _float || _double != _double)
+		throw ImposibleConvertion();
+	if (_char < ' ')
+		throw NoDisplayable();
+	ss << "'" <<_char << "'";
+	return (ss.str());
 }
 
-int				Convert::getInt(void) const
+std::string		Convert::getInt(void) const
 {
-	return this->_int;
+	std::stringstream ss;
+
+	if (_float != _float || _double != _double)
+		throw ImposibleConvertion();
+	ss << _int;
+	return (ss.str());
 }
 
-float			Convert::getFloat(void) const
+std::string		Convert::getFloat(void) const
 {
-	return this->_float;
+	std::stringstream ss;
+	
+	ss << _float;
+	if (static_cast<float>(_int) == _float)
+		ss << ".0";
+	ss << "f";
+	return (ss.str());
 }
 
-double			Convert::getDouble(void) const
+std::string		Convert::getDouble(void) const
 {
-	return this->_double;
+	std::stringstream ss;
+	ss << _double;
+	if (static_cast<double>(_int) == _double)
+		ss << ".0";
+	return (ss.str());
 }
