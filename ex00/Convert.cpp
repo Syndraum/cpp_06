@@ -64,7 +64,7 @@ void	Convert::detection()
 		_float = static_cast<float>(_double);
 	}
 	else
-		throw ImposibleConvertion();
+		throw NoConvertionfound();
 }
 
 bool	Convert::isChar() const
@@ -97,7 +97,7 @@ bool	Convert::isFloat() const
 
 	if (_string == "nanf" || _string == "-inff" || _string == "+inff")
 		return true;
-	while (_org[++i] && _org[++i] != 'f')
+	while (_org[++i] && _org[i] != 'f')
 	{
 		if(_org[i] == '.'){
 			if (asDot)

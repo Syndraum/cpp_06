@@ -21,6 +21,11 @@ public:
 			return "No displayable";
 		}
 	};
+	class NoConvertionfound : public std::exception{
+		virtual const char* what() const throw(){
+			return "No conversion";
+		}
+	};
 	Convert(char const *value);
 	Convert(Convert const & src);
 	virtual ~Convert(void);
