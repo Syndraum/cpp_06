@@ -1,0 +1,27 @@
+SRCS = main.cpp A.cpp B.cpp C.cpp
+
+OBJS = ${SRCS:.cpp=.o}
+
+CC = clang++
+
+CFLAG = -Wall -Werror -Wextra -g
+
+RM = rm -f
+
+NAME = identify
+
+all:	${NAME}
+
+.cpp.o:
+	${CC} ${CFLAG} -c  $< -o ${<:.cpp=.o}
+
+${NAME}:	${OBJS}
+	${CC} ${CFLAG} ${OBJS} -o ${NAME}
+
+clean:
+	${RM} ${OBJS}
+
+fclean: clean
+	${RM} ${NAME}
+
+re: fclean all
