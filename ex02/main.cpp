@@ -20,9 +20,59 @@ void identify_from_pointer(Base * p)
 	
 }
 
+void identify_from_reference(Base & p)
+{
+	try
+	{
+		A & a = dynamic_cast<A&>(p);
+		(void)a;
+		std::cout << "A";
+	}
+	catch(const std::exception& e)
+	{
+		try
+		{
+			B & b = dynamic_cast<B&>(p);
+			(void)b;
+			std::cout << "B";
+		}
+		catch(const std::exception& e)
+		{
+			try
+			{
+				C & c = dynamic_cast<C&>(p);
+				(void)c;
+				std::cout << "C";
+			}
+			catch(const std::exception& e)
+			{
+				std::cerr << "Unknow type";
+			}
+			
+		}
+		
+	}
+	std::cout << "\n";
+	
+}
+
 int main()
 {
-	Base * p = new A();
+	Base base = Base();
+	A a = A();
+	B b = B();
+	C c = C();
+
+	Base * p = new Base();
+	std::cout << "////// TEST POINTER //////" << std::endl;
+	identify_from_pointer(&a);
+	identify_from_pointer(&b);
+	identify_from_pointer(&c);
+	identify_from_pointer(&base);
+	identify_from_pointer(0);
+	identify_from_pointer(p);
+	delete p;
+	p = new A();
 	identify_from_pointer(p);
 	delete p;
 	p = new B();
@@ -31,10 +81,11 @@ int main()
 	p = new C();
 	identify_from_pointer(p);
 	delete p;
-	p = new Base();
-	identify_from_pointer(p);
-	delete p;
-	p = 0;
-	identify_from_pointer(p);
+
+	std::cout << "////// TEST REFERENCE //////" << std::endl;
+	identify_from_reference(a);
+	identify_from_reference(b);
+	identify_from_reference(c);
+	identify_from_reference(base);
 	return 0;
 }
