@@ -82,6 +82,8 @@ bool	Convert::isInt() const
 {
 	int	i = -1;
 
+	if (_org[i+1] == '-')
+		i++;
 	while (_org[++i])
 	{
 		if (_org[i] < '0' || _org[i] > '9')
@@ -97,6 +99,8 @@ bool	Convert::isFloat() const
 
 	if (_string == "nanf" || _string == "-inff" || _string == "+inff")
 		return true;
+	if (_org[i+1] == '-')
+		i++;
 	while (_org[++i] && _org[i] != 'f')
 	{
 		if(_org[i] == '.'){
@@ -119,6 +123,8 @@ bool	Convert::isDouble() const
 
 	if (_string == "nan" || _string == "-inf" || _string == "+inf")
 		return true;
+	if (_org[i+1] == '-')
+		i++;
 	while (_org[++i])
 	{
 		if(_org[i] == '.'){
