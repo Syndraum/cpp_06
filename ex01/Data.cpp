@@ -31,7 +31,7 @@ Data * deserialize(void * raw)
 
 std::ostream & operator<<(std::ostream & o, Data const & data)
 {
-	o << "//////// " << data.s1 << " " << data.n << " " << data.s2 << " ///////" << std::endl;
+	o << "// DATA // " << data.s1 << " " << data.n << " " << data.s2 << std::endl;
 	return o;
 }
 
@@ -41,11 +41,15 @@ void	describre(void * raw)
 	int i = -1;
 	char * cursor = reinterpret_cast<char*>(raw);
 
-	std::cout << "         ";
+	std::cout << "// RAW //  " << std::string(cursor, 20) << std::endl << "// INT //  ";
 	while (++i < 8)
 		std::cout << cursor[i];
-	std::cout << " " << *reinterpret_cast<int*>(&cursor[8]) << " ";
+	i = 7;
+	std::cout << " ";
+	while (++i < 12)
+		std::cout << static_cast<int>(cursor[i]) << " ";
 	i = 11;
+	std::cout << " ";
 	while (++i < 20)
 		std::cout << cursor[i];
 	std::cout << std::endl;
