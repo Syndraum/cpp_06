@@ -14,7 +14,7 @@ void * serialize(void)
 	i = 11;
 	while (++i < 20)
 		adress[i] = 32 + rand() % 95;
-	return adress;
+	return reinterpret_cast<void*>(adress);
 }
 
 Data * deserialize(void * raw)
