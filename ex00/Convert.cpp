@@ -74,6 +74,8 @@ bool	Convert::isInt() const
 
 	if (_org[i+1] == '-')
 		i++;
+	if (_org[i + 1] == 0)
+		return false;
 	while (_org[++i])
 	{
 		if (_org[i] < '0' || _org[i] > '9')
