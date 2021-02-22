@@ -51,7 +51,6 @@ private:
 	int			_int;
 	float		_float;
 	double		_double;
-	char		_pointeur[4];
 };
 
 #endif

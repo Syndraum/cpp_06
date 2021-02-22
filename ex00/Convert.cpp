@@ -1,18 +1,8 @@
 #include "Convert.hpp"
 
-Convert::Convert(void) : _org(""), _string(""), _char(' '), _int(0), _float(0.0f), _double(0.0)
-{
-	for (size_t i = 0; i < 4; i++){
-		_pointeur[i] = 0;
-	}
-}
+Convert::Convert(void) : _org(""), _string(""), _char(' '), _int(0), _float(0.0f), _double(0.0) {}
 
-Convert::Convert(char const *value) : _org(value), _string(value), _char(' '), _int(0), _float(0.0f), _double(0.0) 
-{
-	for (size_t i = 0; i < 4; i++){
-		_pointeur[i] = 0;
-	}
-}
+Convert::Convert(char const *value) : _org(value), _string(value), _char(' '), _int(0), _float(0.0f), _double(0.0) {}
 
 Convert::Convert(Convert const & src)
 {
@@ -87,7 +77,7 @@ bool	Convert::isInt() const
 	while (_org[++i])
 	{
 		if (_org[i] < '0' || _org[i] > '9')
-		return false;
+			return false;
 	}
 	return true;
 }
