@@ -12,7 +12,7 @@ int main(int argc, char const *argv[])
 	{
 		convert.detection();
 	}
-	catch(const Convert::NoConvertionfound& e)
+	catch(const std::exception& e)
 	{
 		std::cerr << "Conversion impossible" << '\n';
 		return 2;
