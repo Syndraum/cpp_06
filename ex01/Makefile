@@ -4,7 +4,7 @@ OBJS = ${SRCS:.cpp=.o}
 
 CC = clang++
 
-CFLAG = -Wall -Werror -Wextra -g
+CFLAG = -Wall -Werror -Wextra
 
 RM = rm -f
 
